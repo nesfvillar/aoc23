@@ -1,6 +1,6 @@
 module Day01 where
 
-import Data.Char
+import Data.Char (isDigit)
 
 input = lines <$> readFile "src/input/day01.txt"
 
@@ -17,3 +17,6 @@ calibrationData s = (read :: String -> Int) [firstDigit s, lastDigit s]
 
 part1 :: [String] -> Int
 part1 = sum . map calibrationData
+
+firstDigit' :: String -> Char
+firstDigit' s = head s
