@@ -16,8 +16,6 @@ input' =
 
 data Draw = Draw {red :: Natural, green :: Natural, blue :: Natural}
 
-emptyDraw = Draw {red = 0, green = 0, blue = 0}
-
 data Game = Game {id :: Int, draws :: [Draw]}
 
 parseInput :: String -> Game
@@ -34,7 +32,7 @@ isPossible :: Draw -> Bool
 isPossible d = red d <= 12 && green d <= 13 && blue d <= 14
 
 part1 :: [Game] -> Int
-part1 = sum . map (fromEnum . isPossible . foldr maxDraw emptyDraw . draws)
+part1 = sum . map (fromEnum . isPossible . foldr1 maxDraw . draws)
 
 part2 :: [String] -> Int
 part2 = undefined
