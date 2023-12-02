@@ -22,11 +22,9 @@ parseInput :: String -> Game
 parseInput = undefined
 
 maxDraw :: Draw -> Draw -> Draw
-maxDraw a b = Draw {red = maxRed a b, green = maxGreen a b, blue = maxBlue a b}
+maxDraw a b = Draw {red = maxColor red a b, green = maxColor green a b, blue = maxColor blue a b}
   where
-    maxRed a b = max (red a) (red b)
-    maxGreen a b = max (green a) (green b)
-    maxBlue a b = max (blue a) (blue b)
+    maxColor c a b = max (c a) (c b)
 
 isPossible :: Draw -> Bool
 isPossible d = red d <= 12 && green d <= 13 && blue d <= 14
