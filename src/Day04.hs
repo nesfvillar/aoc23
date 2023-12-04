@@ -1,9 +1,9 @@
 module Day04 where
 
-data Card = Card {winners, cards :: [Int]}
+data Card = Card {winners, numbers :: [Int]}
 
 winningCards :: Card -> [Int]
-winningCards card = filter (\c -> c `elem` winners card) $ cards card
+winningCards card = filter (\c -> c `elem` winners card) $ numbers card
 
 value :: Card -> Int
 value card =
