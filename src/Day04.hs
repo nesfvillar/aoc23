@@ -1,13 +1,13 @@
 module Day04 where
 
-data Card = Card {winners, numbers :: [Int]}
+data Card = Card {winningNumbers, numbers :: [Int]}
 
-winningCards :: Card -> [Int]
-winningCards card = filter (\c -> c `elem` winners card) $ numbers card
+winners :: Card -> [Int]
+winners card = filter (\c -> c `elem` winningNumbers card) $ numbers card
 
 value :: Card -> Int
 value card =
-  let n = length (winningCards card)
+  let n = length (winners card)
    in if n == 0 then 0 else 2 ^ (n - 1)
 
 part1 :: [Card] -> Int
