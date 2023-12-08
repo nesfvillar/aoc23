@@ -10,9 +10,12 @@ input :: [(Int, Int)]
 input = zip maxTimes distances
 
 waysToWin :: Int -> Int -> Int
-waysToWin t d = length $ filter (wins d t) [0 .. t]
+waysToWin t d = maxT t' d' - minT t' d' + 1
   where
-    wins d mt t = d < t * (mt - t)
+    t' = fromIntegral t
+    d' = fromIntegral d
+    maxT t d = floor $ (t + sqrt (t ^ 2 - 4 * d)) / 2
+    minT t d = ceiling $ (t - sqrt (t ^ 2 - 4 * d)) / 2
 
 part1 :: [(Int, Int)] -> Int
 part1 = product . map (uncurry waysToWin)
